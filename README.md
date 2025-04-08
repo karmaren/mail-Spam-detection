@@ -13,7 +13,7 @@ Congratulations! You have been specially selected in our exclusive loyalty progr
 
 To ensure you receive your funds promptly, please confirm your personal details by clicking the secure link below:
 
-👉 [http://freecash-reward-now.ru/login]
+👉 [://freecash-reward-now.ru/login]
 
 Your reward ID: X9F-KL23-WIN100
 
@@ -32,7 +32,7 @@ Thank you for your loyalty. We look forward to rewarding you generously.
 
 Sincerely,  
 The Rewards & Benefits Department  
-[www.fastcashwinners.ru] 
+[.fastcashwinners.ru] 
 "Turning Dreams into Dollars!"
 
 
@@ -74,5 +74,5 @@ Best regards,
 Michael Young  
 Product Manager, Apollo Team  
 michael.young@companyname.com | +1 (555) 123-4567  
-[www.companyname.com]
+[.companyname.com]
 ****
