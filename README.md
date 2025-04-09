@@ -1,78 +1,51 @@
-pip install pandas numpy scikit-learn tensorflow streamlit joblib nltk matplotlib
+# 📧 Email Spam Detector (Streamlit + Neural Network)
 
-python -m streamlit run spam_app.py
+This is a web-based **Email Spam Classifier** built with **Streamlit** and a **Neural Network** (TensorFlow). It allows users to input the content of an email and determine whether it's **Spam** or **Not Spam (Ham)**.
 
+## 🚀 Features
 
-# Test spam mail
+- 🔍 Uses **TF-IDF vectorization** to transform email text into numeric features
+- 🤖 A **Neural Network** built with TensorFlow for classification
+- 📊 Displays prediction confidence and model accuracy
+- 🧠 Shows most common words found in spam and ham emails
+- 🕒 Displays last training date and accuracy score
 
-Subject: 🚨 URGENT: Final Notice – Claim Your $10,000 Cash Reward NOW!
+## 🧠 Model Architecture
+This uses simple feedforward neural network
+- Input: TF-IDF vector of 5000 features
+- Hidden Layer 1: Dense(128) + ReLU + Dropout(0.5)
+- Hidden Layer 2: Dense(64) + ReLU + Dropout(0.5)
+- Output: Dense(1) + Sigmoid (binary classification)
 
-Dear Valued Customer,
+## 🗃️ Dataset
 
-Congratulations! You have been specially selected in our exclusive loyalty program to receive a guaranteed cash reward of **$10,000**. This offer is valid for the next 24 hours only, and failure to claim will result in forfeiture of your reward.
-
-To ensure you receive your funds promptly, please confirm your personal details by clicking the secure link below:
-
-👉 [://freecash-reward-now.ru/login]
-
-Your reward ID: X9F-KL23-WIN100
-
-💸 What you get:
-- $10,000 in direct bank transfer
-- Free iPhone 15 Pro Max
-- Entry into our $1,000,000 Mega Draw
-
-⚠️ This is a limited-time promotional offer for our premium customers ONLY. Do not share this link or forward this email. Act fast — only 13 rewards left as of now!
-
-For security reasons, we require identity verification. Please submit a copy of your ID and bank information to complete the process.
-
-Still unsure? Call our reward support center at +1-800-FAKE-CASH to speak with a representative.
-
-Thank you for your loyalty. We look forward to rewarding you generously.
-
-Sincerely,  
-The Rewards & Benefits Department  
-[.fastcashwinners.ru] 
-"Turning Dreams into Dollars!"
+The model is trained using a labeled dataset of spam and ham emails (`spamham.csv`). The emails are cleaned and stopwords are removed before feature extraction.
 
 
 
+# 🛠️ How to Use
 
-# Test HAm mail
+### 1. Install dependencies:
 
-Subject: Project Apollo – Weekly Update & Next Steps
+```
+pip install -r requirements.txt
+```
 
-Hi Team,
+### 2.Train the Model:
 
-I hope you all had a productive and restful weekend.
+```
+python train_model.py
+```
 
-Here’s a quick overview of our progress on **Project Apollo** over the past week:
+### 3. Run the streamlit app:
 
-✅ Completed:
-- Finalized the onboarding flow for new users.
-- Resolved all priority bugs from Sprint #12.
-- Finished integration testing with the payment gateway.
+```
+streamlit run app/spam_app.py
+```
 
-🔄 In Progress:
-- UI/UX updates for the mobile dashboard (ETA: Wednesday).
-- Accessibility audit for the main landing page.
-- Backend performance optimization (targeting a 30% improvement).
+📌 Notes
+The neural network and vectorizer are saved and reused between sessions.
 
-📅 Upcoming Milestones:
-- Internal demo: Friday, April 12th at 11:00 AM
-- Stakeholder review: Tuesday, April 16th
-- Sprint Planning Meeting: Monday, April 15th at 10:00 AM
+Includes training insights like top 20 spam/ham words.
 
-📌 Notes:
-- Please make sure your Jira tickets are updated by Thursday EOD.
-- Reach out to Sarah if you need access to the new design components.
-- Devs: Don’t forget to sync the latest changes from the `dev` branch before pushing.
-
-Thanks again for all your hard work. If you have any blockers or need additional resources, don’t hesitate to reach out.
-
-Best regards,  
-Michael Young  
-Product Manager, Apollo Team  
-michael.young@companyname.com | +1 (555) 123-4567  
-[.companyname.com]
-****
+Designed as a demo. For production use, retrain with domain-specific data.
