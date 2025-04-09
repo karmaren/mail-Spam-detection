@@ -26,15 +26,15 @@ It uses **TF-IDF** for feature extraction and a **deep learning model** for clas
 st.sidebar.markdown("**Made with ❤️ using Streamlit + TensorFlow**")
 
 # Load model and vectorizer
-model = load_model("spam_detector_model.keras")
-vectorizer = joblib.load("vectorizer.pkl")
+model = load_model("app/spam_detector_model.keras")
+vectorizer = joblib.load("app/vectorizer.pkl")
 try:
-    with open("model_accuracy.txt", "r") as f:
+    with open("model/model_accuracy.txt", "r") as f:
         accuracy = float(f.read())
 except:
     accuracy = None
 try:
-    with open("last_trained.txt", "r") as f:
+    with open("model/last_trained.txt", "r") as f:
         trained_on = f.read()
 except:
     trained_on = "Unknown"
@@ -44,7 +44,7 @@ if accuracy:
     st.sidebar.markdown(f"**🔍 Model Test Accuracy:** `{accuracy*100:.2f}%`")
 
 # Load top words
-with open("top_words.pkl", "rb") as f:
+with open("model/top_words.pkl", "rb") as f:
     top_words = pickle.load(f)
 
 # Stopwords
@@ -112,7 +112,6 @@ if st.button("Check Spam"):
             - 🔍 **Check your email list for spam traps with 99% accuracy guaranteed**
             - ♻️ **Detect recycled, typo, and pristine traps**
             - 📦 **Single and bulk spam trap checker**
-            - ⚡ **Real-time API for automated spam trap checks on signup forms**
             """)
 
         st.divider()

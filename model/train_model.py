@@ -11,7 +11,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from datetime import datetime
-with open("last_trained.txt", "w") as f:
+import os
+
+# Ensure model directory exists
+os.makedirs("model", exist_ok=True)
+os.makedirs("app", exist_ok=True)
+
+with open("model/last_trained.txt", "w") as f:
     f.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 nltk.download('stopwords')
@@ -53,12 +59,13 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit(X_train, y_train, epochs=5, batch_size=32, validation_data=(X_test, y_test))
 loss, accuracy = model.evaluate(X_test, y_test, verbose=0)
 print(f"Test Accuracy: {accuracy:.4f}")
-with open("model_accuracy.txt", "w") as f:
+
+with open("model/model_accuracy.txt", "w") as f:
     f.write(str(accuracy))
 
 # Save model and vectorizer
-model.save("spam_detector_model.keras")
-joblib.dump(vectorizer, "vectorizer.pkl")
+model.save("app/spam_detector_model.keras")
+joblib.dump(vectorizer, "app/vectorizer.pkl")
 
 # Save top words for insights
 spam_words = " ".join(df[df['label'] == 1]['cleaned']).split()
@@ -66,5 +73,5 @@ ham_words = " ".join(df[df['label'] == 0]['cleaned']).split()
 top_spam = Counter(spam_words).most_common(20)
 top_ham = Counter(ham_words).most_common(20)
 
-with open("top_words.pkl", "wb") as f:
+with open("model/top_words.pkl", "wb") as f:
     pickle.dump({'spam': top_spam, 'ham': top_ham}, f)
